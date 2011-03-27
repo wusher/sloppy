@@ -60,6 +60,7 @@ namespace Sloppy
 				}
 			}
 		}
+
 		private Option LookupByShortName(string command)
 		{
 			char shortCommand = command[1];
@@ -75,7 +76,6 @@ namespace Sloppy
 				throw new InvalidArgumentException();
 			return _longNameLookup[command];
 		}
-
 
 		private readonly List<Option> _options = new List<Option>();
 		private readonly Dictionary<char, Option> _shortNameLookup = new Dictionary<char, Option>();

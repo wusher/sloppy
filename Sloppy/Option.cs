@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 namespace Sloppy
 {
 	public class Option
@@ -14,7 +15,6 @@ namespace Sloppy
 		public string Description { get; set; }
 
 		public System.Action<string> Callback { get; set; }
-
 
 		public void ProcessCommand(Stack<string> stack, Arguments arguements)
 		{

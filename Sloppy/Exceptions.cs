@@ -1,11 +1,11 @@
 using System;
-using System.Runtime.Serialization;
 
 namespace Sloppy
 {
 	public class DuplicateOptionException : Exception
 	{
 	}
+
 	public class RequiredArgumentMissingException : ArgumentOutOfRangeException
 	{
 		public RequiredArgumentMissingException(string paramName, string message)
@@ -13,6 +13,7 @@ namespace Sloppy
 		{
 		}
 	}
+
 	public class InvalidArgumentException : Exception
 	{
 	}

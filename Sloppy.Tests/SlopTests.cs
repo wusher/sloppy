@@ -6,10 +6,10 @@ namespace Sloppy.Tests
 	[TestFixture]
 	public class SlopTests
 	{
-		/// <summary> 
-		/// Parse 
-		/// Given RequiredOptionPassed 
-		/// Expect OptionInArguments 
+		/// <summary>
+		/// Parse
+		/// Given RequiredOptionPassed
+		/// Expect OptionInArguments
 		/// </summary>
 		[Test]
 		public void Parse_RequiredOptionPassed_OptionInArguments()
@@ -22,10 +22,11 @@ namespace Sloppy.Tests
 			//assert
 			((string)args.Apple).Should().Equal("value");
 		}
-		/// <summary> 
-		/// Parse 
-		/// Given IsRequiredButNotPassed 
-		/// Expect Exception 
+
+		/// <summary>
+		/// Parse
+		/// Given IsRequiredButNotPassed
+		/// Expect Exception
 		/// </summary>
 		[Test]
 		[ExpectedException(typeof(RequiredArgumentMissingException))]
@@ -38,6 +39,7 @@ namespace Sloppy.Tests
 			_unitUnderTest.Parse(new string[0] { });
 			//assert
 		}
+
 		/// <summary>
 		/// Parse
 		/// Given OptionHasDefaultButNoValue
