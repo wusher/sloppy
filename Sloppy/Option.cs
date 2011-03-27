@@ -20,10 +20,10 @@ namespace Sloppy
 		{
 			string name = LongName;
 			object value;
-			if (!(stack.IsEmpty() || stack.Peek().IsCommand()))
-				value = stack.Pop();
-			else
+			if (stack.IsEmpty() || stack.Peek().IsCommand())
 				value = null;
+			else
+				value = stack.Pop();
 			arguements.Add(name, value);
 			if (Callback != null)
 				Callback(value.ToString());

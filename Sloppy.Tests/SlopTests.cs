@@ -8,11 +8,27 @@ namespace Sloppy.Tests
 	{
 		/// <summary> 
 		/// Parse 
+		/// Given RequiredOptionPassed 
+		/// Expect OptionInArguments 
+		/// </summary>
+		[Test]
+		public void Parse_RequiredOptionPassed_OptionInArguments()
+		{
+			//arrange
+			_option1.IsRequired = true;
+			_unitUnderTest.AddOption(_option1);
+			//act
+			dynamic args = _unitUnderTest.Parse(new string[2] { "--" + _option1.LongName, "value" });
+			//assert
+			((string)args.Apple).Should().Equal("value");
+		}
+		/// <summary> 
+		/// Parse 
 		/// Given IsRequiredButNotPassed 
 		/// Expect Exception 
 		/// </summary>
 		[Test]
-        [ExpectedException(typeof(ArgumentInvalidException))]
+		[ExpectedException(typeof(RequiredArgumentMissingException))]
 		public void Parse_IsRequiredButNotPassed_Exception()
 		{
 			//arrange
@@ -117,7 +133,7 @@ namespace Sloppy.Tests
 		/// Expect Exception
 		/// </summary>
 		[Test]
-		[ExpectedException(typeof(ArgumentInvalidException))]
+		[ExpectedException(typeof(InvalidArgumentException))]
 		public void Parse_ShortKeyDoesNotExist_Exception()
 		{
 			//arrange

@@ -18,58 +18,64 @@ namespace Sloppy
 
 		public Arguments Parse(String[] args)
 		{
-			var arguements = new Arguments();
-			ProcessArguements(args, arguements);
+			var arguments = new Arguments();
+			ProcessArguments(args, arguments);
 
-			var keys = arguements.GetKeys();
+			HandleMissingArguments(arguments);
+			return arguments;
+		}
+
+		private void ProcessArguments(String[] args, Arguments arguments)
+		{
+			Stack<string> stack = GetStackFromArgs(args);
+			while (stack.Count > 0)
+			{
+				string command = stack.Pop();
+				Option option = null;
+				if (command.IsLongCommand())
+				{
+					option = LookupByLongName(command);
+				}
+				else if (command.IsShortCommand())
+				{
+					option = LookupByShortName(command);
+				}
+				if (option != null)
+					option.ProcessCommand(stack, arguments);
+			}
+		}
+
+		private void HandleMissingArguments(Arguments arguments)
+		{
+			var keys = arguments.GetKeys();
 			var options = _options.ToList();
 			foreach (var option in options)
 			{
 				if (!keys.Contains(option.LongName.ToLower()))
 				{
 					if (option.IsRequired)
-						throw new ArgumentInvalidException();
+						throw new RequiredArgumentMissingException(option.LongName, option.LongName + " is a required command line argument");
 					if (option.Default != null)
-						arguements.Add(option.LongName, option.Default);
-				}
-			}
-			return arguements;
-		}
-
-		private void ProcessArguements(String[] args, Arguments arguements)
-		{
-			Stack<string> stack = GetStackFromArgs(args);
-			while (stack.Count > 0)
-			{
-				string command = stack.Pop();
-				if (command.IsLongCommand())
-				{
-					ProcessLongCommand(stack, arguements, command);
-				}
-				else if (command.IsShortCommand())
-				{
-					ProcessShortCommand(stack, arguements, command);
+						arguments.Add(option.LongName, option.Default);
 				}
 			}
 		}
-
-		private void ProcessShortCommand(Stack<string> stack, Arguments arguements, string command)
+		private Option LookupByShortName(string command)
 		{
 			char shortCommand = command[1];
 			if (!_shortNameLookup.ContainsKey(shortCommand))
-				throw new ArgumentInvalidException();
-			Option optionInfo = _shortNameLookup[shortCommand];
-			optionInfo.ProcessCommand(stack, arguements);
+				throw new InvalidArgumentException();
+			return _shortNameLookup[shortCommand];
 		}
 
-		private void ProcessLongCommand(Stack<string> stack, Arguments arguements, string command)
+		private Option LookupByLongName(string command)
 		{
 			command = command.Substring(2, command.Length - 2);
 			if (!_longNameLookup.ContainsKey(command))
-				throw new ArgumentInvalidException();
-			Option optionInfo = _longNameLookup[command];
-			optionInfo.ProcessCommand(stack, arguements);
+				throw new InvalidArgumentException();
+			return _longNameLookup[command];
 		}
+
 
 		private readonly List<Option> _options = new List<Option>();
 		private readonly Dictionary<char, Option> _shortNameLookup = new Dictionary<char, Option>();
