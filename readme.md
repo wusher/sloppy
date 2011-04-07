@@ -1,5 +1,9 @@
-Slop
+Sloppy
 ====
+
+A .Net version of the Slop gem for ruby 
+
+https://github.com/injekt/slop
 
 Usage 
 -----
