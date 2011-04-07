@@ -55,10 +55,10 @@ namespace Sloppy.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Option with no value exists")]
-        public virtual void OptionWithNoValueExists()
+        [NUnit.Framework.DescriptionAttribute("Long option with no value exists")]
+        public virtual void LongOptionWithNoValueExists()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Option with no value exists", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Long option with no value exists", ((string[])(null)));
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line hidden
@@ -86,10 +86,10 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Option with no value returns true")]
-        public virtual void OptionWithNoValueReturnsTrue()
+        [NUnit.Framework.DescriptionAttribute("Long option with no value returns null")]
+        public virtual void LongOptionWithNoValueReturnsNull()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Option with no value returns true", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Long option with no value returns null", ((string[])(null)));
 #line 16
 this.ScenarioSetup(scenarioInfo);
 #line hidden
@@ -111,6 +111,68 @@ this.ScenarioSetup(scenarioInfo);
 #line 20
  testRunner.When("I pass in the arguments", ((string)(null)), table4);
 #line 23
+ testRunner.Then("the property verbose should return <null>");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Short option with no value exists")]
+        public virtual void ShortOptionWithNoValueExists()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Short option with no value exists", ((string[])(null)));
+#line 25
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "short",
+                        "long",
+                        "description"});
+            table5.AddRow(new string[] {
+                        "v",
+                        "verbose",
+                        "verbose"});
+#line 26
+ testRunner.Given("I have the following option", ((string)(null)), table5);
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "args"});
+            table6.AddRow(new string[] {
+                        "-v"});
+#line 29
+ testRunner.When("I pass in the arguments", ((string)(null)), table6);
+#line 32
+ testRunner.Then("the property verbose should exist");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Short option with no value returns null")]
+        public virtual void ShortOptionWithNoValueReturnsNull()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Short option with no value returns null", ((string[])(null)));
+#line 35
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "short",
+                        "long",
+                        "description"});
+            table7.AddRow(new string[] {
+                        "v",
+                        "verbose",
+                        "verbose"});
+#line 36
+ testRunner.Given("I have the following option", ((string)(null)), table7);
+#line hidden
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "args"});
+            table8.AddRow(new string[] {
+                        "-v"});
+#line 39
+ testRunner.When("I pass in the arguments", ((string)(null)), table8);
+#line 42
  testRunner.Then("the property verbose should return <null>");
 #line hidden
             testRunner.CollectScenarioErrors();
