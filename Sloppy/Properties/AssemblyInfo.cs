@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
@@ -20,6 +21,7 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("403a17b1-154e-44b0-a5cb-63101514bd1a")]
+[assembly: InternalsVisibleTo("Sloppy.Tests")]
 
 // Version information for an assembly consists of the following four values:
 //

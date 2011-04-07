@@ -81,12 +81,12 @@ namespace Sloppy
 		private readonly Dictionary<char, Option> _shortNameLookup = new Dictionary<char, Option>();
 		private readonly Dictionary<string, Option> _longNameLookup = new Dictionary<string, Option>();
 
-		public List<Option> Options
+		internal List<Option> Options
 		{
 			get { return _options.ToList(); }
 		}
 
-		public void AddOption(Option option)
+		internal void AddOption(Option option)
 		{
 			if (_shortNameLookup.ContainsKey(option.ShortName))
 				throw new DuplicateOptionException();

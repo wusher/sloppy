@@ -26,7 +26,7 @@ namespace Sloppy
 				value = stack.Pop();
 			arguements.Add(name, value);
 			if (Callback != null)
-				Callback(value.ToString());
+				Callback((value??"").ToString());
 		}
 	}
 }

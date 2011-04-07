@@ -59,6 +59,23 @@ namespace Sloppy.Tests
 			value.Should().Equal(defaultValue);
 		}
 
+		/// <summary> 
+		/// Parse 
+		/// Given CallbackButNoValue 
+		/// Expect CallBackCalled 
+		/// </summary>
+		[Test]
+		public void Parse_CallbackButNoValue_CallBackCalled()
+		{
+			//arrange
+			bool isCalledbackCalled = false;
+			_option1.Callback = (x) => isCalledbackCalled = true;
+			_unitUnderTest.AddOption(_option1);
+			//act
+			 _unitUnderTest.Parse(new string[1] { "-" + _option1.ShortName });
+			//assert
+			isCalledbackCalled.Should().Be.True();
+		}
 		/// <summary>
 		/// Parse
 		/// Given Callback
