@@ -46,7 +46,7 @@ namespace Sloppy.Features.Steps
 			_arguments.HasProperty(propertyName).Should().Be.True();
 		}
 
-		[Then(@"the property (.*) should return (.*)")]
+		[Then(@"the property (.*) should return ""(.*)""")]
 		public void ThenThePropertyXShouldReturnY(string propertyName, string value)
 		{
 			(_arguments.GetValue(propertyName)?? "<null>").ToString().Should().Equal(value);

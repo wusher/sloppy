@@ -111,7 +111,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 20
  testRunner.When("I pass in the arguments", ((string)(null)), table4);
 #line 23
- testRunner.Then("the property verbose should return <null>");
+ testRunner.Then("the property verbose should return \"<null>\"");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -173,7 +173,139 @@ this.ScenarioSetup(scenarioInfo);
 #line 39
  testRunner.When("I pass in the arguments", ((string)(null)), table8);
 #line 42
- testRunner.Then("the property verbose should return <null>");
+ testRunner.Then("the property verbose should return \"<null>\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Long option with value exists")]
+        public virtual void LongOptionWithValueExists()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Long option with value exists", ((string[])(null)));
+#line 45
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                        "short",
+                        "long",
+                        "description"});
+            table9.AddRow(new string[] {
+                        "m",
+                        "message",
+                        "message"});
+#line 46
+ testRunner.Given("I have the following option", ((string)(null)), table9);
+#line hidden
+            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                        "args"});
+            table10.AddRow(new string[] {
+                        "--message"});
+            table10.AddRow(new string[] {
+                        "bad clown, sad summmer"});
+#line 49
+ testRunner.When("I pass in the arguments", ((string)(null)), table10);
+#line 53
+ testRunner.Then("the property message should exist");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Long option with value returns value")]
+        public virtual void LongOptionWithValueReturnsValue()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Long option with value returns value", ((string[])(null)));
+#line 56
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                        "short",
+                        "long",
+                        "description"});
+            table11.AddRow(new string[] {
+                        "m",
+                        "message",
+                        "message"});
+#line 57
+ testRunner.Given("I have the following option", ((string)(null)), table11);
+#line hidden
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                        "args"});
+            table12.AddRow(new string[] {
+                        "--message"});
+            table12.AddRow(new string[] {
+                        "bad clown, sad summmer"});
+#line 60
+ testRunner.When("I pass in the arguments", ((string)(null)), table12);
+#line 64
+ testRunner.Then("the property message should return \"bad clown, sad summmer\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Short option with value exists")]
+        public virtual void ShortOptionWithValueExists()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Short option with value exists", ((string[])(null)));
+#line 66
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                        "short",
+                        "long",
+                        "description"});
+            table13.AddRow(new string[] {
+                        "m",
+                        "message",
+                        "message"});
+#line 67
+ testRunner.Given("I have the following option", ((string)(null)), table13);
+#line hidden
+            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                        "args"});
+            table14.AddRow(new string[] {
+                        "-m"});
+            table14.AddRow(new string[] {
+                        "bad clown, sad summmer"});
+#line 70
+ testRunner.When("I pass in the arguments", ((string)(null)), table14);
+#line 74
+ testRunner.Then("the property message should exist");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Short option with value returns value")]
+        public virtual void ShortOptionWithValueReturnsValue()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Short option with value returns value", ((string[])(null)));
+#line 77
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+                        "short",
+                        "long",
+                        "description"});
+            table15.AddRow(new string[] {
+                        "m",
+                        "message",
+                        "message"});
+#line 78
+ testRunner.Given("I have the following option", ((string)(null)), table15);
+#line hidden
+            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                        "args"});
+            table16.AddRow(new string[] {
+                        "-m"});
+            table16.AddRow(new string[] {
+                        "bad clown, sad summmer"});
+#line 81
+ testRunner.When("I pass in the arguments", ((string)(null)), table16);
+#line 85
+ testRunner.Then("the property message should return \"bad clown, sad summmer\"");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
