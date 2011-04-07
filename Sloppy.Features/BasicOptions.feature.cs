@@ -55,13 +55,11 @@ namespace Sloppy.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Option with no value")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void OptionWithNoValue()
+        [NUnit.Framework.DescriptionAttribute("Option with no value exists")]
+        public virtual void OptionWithNoValueExists()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Option with no value", new string[] {
-                        "mytag"});
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Option with no value exists", ((string[])(null)));
+#line 6
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -72,17 +70,48 @@ this.ScenarioSetup(scenarioInfo);
                         "v",
                         "verbose",
                         "verbose"});
-#line 8
+#line 7
  testRunner.Given("I have the following option", ((string)(null)), table1);
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "args"});
             table2.AddRow(new string[] {
                         "--verbose"});
-#line 11
+#line 10
  testRunner.When("I pass in the arguments", ((string)(null)), table2);
-#line 14
+#line 13
  testRunner.Then("the property verbose should exist");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Option with no value returns true")]
+        public virtual void OptionWithNoValueReturnsTrue()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Option with no value returns true", ((string[])(null)));
+#line 16
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "short",
+                        "long",
+                        "description"});
+            table3.AddRow(new string[] {
+                        "v",
+                        "verbose",
+                        "verbose"});
+#line 17
+ testRunner.Given("I have the following option", ((string)(null)), table3);
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "args"});
+            table4.AddRow(new string[] {
+                        "--verbose"});
+#line 20
+ testRunner.When("I pass in the arguments", ((string)(null)), table4);
+#line 23
+ testRunner.Then("the property verbose should return <null>");
 #line hidden
             testRunner.CollectScenarioErrors();
         }

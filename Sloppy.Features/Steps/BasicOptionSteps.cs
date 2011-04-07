@@ -12,8 +12,8 @@ namespace Sloppy.Features.Steps
 	public class BasicOptionSteps
 	{
 		private Arguments _arguments;
-        private Slop _slop;
-        [BeforeScenario]
+		private Slop _slop;
+		[BeforeScenario]
 		public void CreateSlop()
 		{
 			_slop = Slop.New();
@@ -23,10 +23,10 @@ namespace Sloppy.Features.Steps
 		public void GivenIHaveTheFollowingOption(Table table)
 		{
 			for (int i = 0; i < table.RowCount; i++)
-            {
-            	TableRow currentRow = table.Rows[i];
-                _slop.Option(currentRow["short"][0],currentRow["long"],currentRow["description"]);
-            }
+			{
+				TableRow currentRow = table.Rows[i];
+				_slop.Option(currentRow["short"][0], currentRow["long"], currentRow["description"]);
+			}
 		}
 
 		[When(@"I pass in the arguments")]
@@ -41,9 +41,15 @@ namespace Sloppy.Features.Steps
 		}
 
 		[Then(@"the property (.*) should exist")]
-		public void ThenThePropertyXShouleExist(string propertyName )
+		public void ThenThePropertyXShouleExist(string propertyName)
 		{
-			_arguments.HasProperty( propertyName).Should().Be.True();
+			_arguments.HasProperty(propertyName).Should().Be.True();
+		}
+
+		[Then(@"the property (.*) should return (.*)")]
+		public void ThenThePropertyXShouldReturnY(string propertyName, string value)
+		{
+			(_arguments.GetValue(propertyName)?? "<null>").ToString().Should().Equal(value);
 		}
 
 	}

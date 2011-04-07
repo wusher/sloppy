@@ -14,11 +14,10 @@ namespace Sloppy
 
 		public override bool TryGetMember(GetMemberBinder binder, out object result)
 		{
-			string name = binder.Name.ToLower();
-			bool canRespond = _values.ContainsKey(name);
-			if (canRespond)
-				result = _values[name];
-			else
+			string name = FixName(binder.Name);
+			bool canRespond = HasProperty(name);
+			result = GetValue(name);
+			if (result == null)
 			{
 				if (name.StartsWith("has"))
 				{
@@ -42,10 +41,26 @@ namespace Sloppy
 				_values.Add(name, value);
 		}
 
+		public object GetValue(string name)
+		{
+			name = FixName(name);
+			object result;
+			bool canRespond = HasProperty(name);
+			if (canRespond)
+				result = _values[name];
+			else
+				result = null;
+			return result;
+		}
+
 		public bool HasProperty(string name)
 		{
-			name = name.ToLower();
+			name = FixName(name);
 			return _values.ContainsKey(name);
+		}
+		private string FixName(string name)
+		{
+			return name.ToLower();
 		}
 	}
 }
