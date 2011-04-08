@@ -55,6 +55,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BasicOptions.feature</DependentUpon>
     </Compile>
+    <Compile Include="DefaultsFeature.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DefaultsFeature.feature</DependentUpon>
+    </Compile>
     <Compile Include="Steps\BasicOptionSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -62,6 +67,10 @@
     <None Include="BasicOptions.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>BasicOptions.feature.cs</LastGenOutput>
+    </None>
+    <None Include="DefaultsFeature.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DefaultsFeature.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
