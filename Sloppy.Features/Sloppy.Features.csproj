@@ -60,6 +60,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DefaultsFeature.feature</DependentUpon>
     </Compile>
+    <Compile Include="RequiredParams.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RequiredParams.feature</DependentUpon>
+    </Compile>
     <Compile Include="Steps\BasicOptionSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -73,6 +78,10 @@
       <LastGenOutput>DefaultsFeature.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <None Include="RequiredParams.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RequiredParams.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sloppy\Sloppy.csproj">

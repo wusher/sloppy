@@ -12,11 +12,18 @@ namespace Sloppy.Features.Steps
 	public class BasicOptionSteps
 	{
 		private Arguments _arguments;
-		private Slop _slop;
+		private Exception _parseException;
+        private Slop _slop;
 		[BeforeScenario]
 		public void CreateSlop()
 		{
 			_slop = Slop.New();
+		}
+[AfterScenario]
+		private void ThrowParseExceptions()
+		{
+			if (_parseException != null)
+				throw _parseException;
 		}
 
 		[Given(@"I have the following option")]
@@ -28,6 +35,16 @@ namespace Sloppy.Features.Steps
 				_slop.Option(currentRow["short"][0], currentRow["long"], currentRow["description"]);
 			}
 		}
+		[Given(@"I have the following option that is required")]
+		public void GivenIHaveTheFollowingOptionThatIsRequired(Table table)
+		{
+			for (int i = 0; i < table.RowCount; i++)
+			{
+				TableRow currentRow = table.Rows[i];
+				_slop.Option(currentRow["short"][0], currentRow["long"], currentRow["description"], required: true );
+			}
+		}
+
 		[Given(@"I have the following option with a default param")]
 		public void GivenIHaveTheFollowingOptionWithADefaultParam(Table table)
 		{
@@ -47,7 +64,14 @@ namespace Sloppy.Features.Steps
 			{
 				args.Add(table.Rows[i][0]);
 			}
-			_arguments = _slop.Parse(args.ToArray());
+			try
+			{
+				_arguments = _slop.Parse(args.ToArray());
+			}
+			catch (Exception ex)
+			{
+				_parseException = ex;
+			}
 		}
 
 		[Then(@"the property (.*) should exist")]
@@ -60,6 +84,12 @@ namespace Sloppy.Features.Steps
 		public void ThenThePropertyXShouldReturnY(string propertyName, string value)
 		{
 			(_arguments.GetValue(propertyName) ?? "<null>").ToString().Should().Equal(value);
+		}
+		[Then(@"there should be an exception")]
+		public void ThenThereShouldBeAnException()
+		{
+			(_parseException is RequiredArgumentMissingException).Should().Be.True();
+			_parseException = null;
 		}
 
 	}
