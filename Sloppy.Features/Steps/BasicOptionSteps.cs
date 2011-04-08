@@ -28,6 +28,16 @@ namespace Sloppy.Features.Steps
 				_slop.Option(currentRow["short"][0], currentRow["long"], currentRow["description"]);
 			}
 		}
+		[Given(@"I have the following option with a default param")]
+		public void GivenIHaveTheFollowingOptionWithADefaultParam(Table table)
+		{
+			for (int i = 0; i < table.RowCount; i++)
+			{
+				TableRow currentRow = table.Rows[i];
+				_slop.Option(currentRow["short"][0], currentRow["long"], currentRow["description"], defaultValue: currentRow["default"]);
+			}
+		}
+
 
 		[When(@"I pass in the arguments")]
 		public void WhenIPassInTheArguments(Table table)
@@ -49,7 +59,7 @@ namespace Sloppy.Features.Steps
 		[Then(@"the property (.*) should return ""(.*)""")]
 		public void ThenThePropertyXShouldReturnY(string propertyName, string value)
 		{
-			(_arguments.GetValue(propertyName)?? "<null>").ToString().Should().Equal(value);
+			(_arguments.GetValue(propertyName) ?? "<null>").ToString().Should().Equal(value);
 		}
 
 	}

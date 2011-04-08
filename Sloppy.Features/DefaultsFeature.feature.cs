@@ -18,8 +18,8 @@ namespace Sloppy.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.6.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Option defuauls")]
-    public partial class OptionDefuaulsFeature
+    [NUnit.Framework.DescriptionAttribute("Option defualts")]
+    public partial class OptionDefualtsFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,7 +31,7 @@ namespace Sloppy.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Option defuauls", "In order to have default values if nothing was passed in \r\nAs a developer\r\nI want" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Option defualts", "In order to have default values if nothing was passed in \r\nAs a developer\r\nI want" +
                     " to be sure defaults are being set for missing values", GenerationTargetLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -73,7 +73,7 @@ this.ScenarioSetup(scenarioInfo);
                         "message",
                         "god loves ugly"});
 #line 7
- testRunner.Given("I have the following option", ((string)(null)), table1);
+ testRunner.Given("I have the following option with a default param", ((string)(null)), table1);
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "args"});
@@ -84,7 +84,45 @@ this.ScenarioSetup(scenarioInfo);
 #line 10
  testRunner.When("I pass in the arguments", ((string)(null)), table2);
 #line 14
- testRunner.Then("the property mesage should return \"bad clown, sad summmer\"");
+ testRunner.Then("the property message should return \"bad clown, sad summmer\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("option without a value returns the default")]
+        public virtual void OptionWithoutAValueReturnsTheDefault()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("option without a value returns the default", ((string[])(null)));
+#line 16
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "short",
+                        "long",
+                        "description",
+                        "default"});
+            table3.AddRow(new string[] {
+                        "m",
+                        "message",
+                        "message",
+                        "god loves ugly"});
+            table3.AddRow(new string[] {
+                        "v",
+                        "verbose",
+                        "verbose",
+                        "true"});
+#line 17
+ testRunner.Given("I have the following option with a default param", ((string)(null)), table3);
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "args"});
+            table4.AddRow(new string[] {
+                        "--verbose"});
+#line 21
+ testRunner.When("I pass in the arguments", ((string)(null)), table4);
+#line 24
+ testRunner.Then("the property message should return \"god loves ugly\"");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
