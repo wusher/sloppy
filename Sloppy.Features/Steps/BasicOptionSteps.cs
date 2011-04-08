@@ -12,7 +12,9 @@ namespace Sloppy.Features.Steps
 	public class BasicOptionSteps
 	{
 		private Arguments _arguments;
-		private Exception _parseException;
+		private string _callbackValue;
+        private Exception _parseException;
+		private bool _wasCallbackCalled;
         private Slop _slop;
 		[BeforeScenario]
 		public void CreateSlop()
@@ -20,13 +22,25 @@ namespace Sloppy.Features.Steps
 			_slop = Slop.New();
 		}
 [AfterScenario]
-		private void ThrowParseExceptions()
+		public void ThrowParseExceptions()
 		{
 			if (_parseException != null)
 				throw _parseException;
-		}
 
-		[Given(@"I have the following option")]
+		}
+[Given(@"I have the following option with a callback")]
+public void GivenIHaveTheFollowingOptionWithACallback(Table table)
+{
+			for (int i = 0; i < table.RowCount; i++)
+			{
+				TableRow currentRow = table.Rows[i];
+				_slop.Option(currentRow["short"][0], currentRow["long"], currentRow["description"], callback: (x) =>
+				{
+					_wasCallbackCalled = true;
+					_callbackValue = x;
+				});
+			}
+		}	[Given(@"I have the following option")]
 		public void GivenIHaveTheFollowingOption(Table table)
 		{
 			for (int i = 0; i < table.RowCount; i++)
@@ -90,6 +104,16 @@ namespace Sloppy.Features.Steps
 		{
 			(_parseException is RequiredArgumentMissingException).Should().Be.True();
 			_parseException = null;
+		}
+		[Then(@"callback should be called")]
+		public void ThenCallbackShouldBeCalled()
+		{
+			_wasCallbackCalled.Should().Be.True();
+		}
+		[Then(@"the value passed to the callback should be ""(.*)""")]
+		public void ThenTheValuePassedToTheCallbackShouleBeX(string value )
+		{
+			(_callbackValue ?? "<null>").Should().Equal(value);
 		}
 
 	}

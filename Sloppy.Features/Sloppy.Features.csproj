@@ -55,6 +55,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BasicOptions.feature</DependentUpon>
     </Compile>
+    <Compile Include="Callbacks.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Callbacks.feature</DependentUpon>
+    </Compile>
     <Compile Include="DefaultsFeature.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -72,6 +77,10 @@
     <None Include="BasicOptions.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>BasicOptions.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Callbacks.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Callbacks.feature.cs</LastGenOutput>
     </None>
     <None Include="DefaultsFeature.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
